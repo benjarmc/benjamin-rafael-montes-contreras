@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Opciones de Envío</h2>
+
+<mat-dialog-content>
+  <div *ngFor="let option of data.shippingOptions">
+    <p><strong>{{ option.carrierDescription }}</strong></p>
+    <p>Servicio: {{ option.serviceDescription }}</p>
+    <p>Entrega estimada: {{ option.deliveryEstimate }}</p>
+    <p>Precio: ${{ option.totalPrice }} MXN</p>
+    <p>Impuestos: ${{ option.shipmentTaxes.totalTax }} MXN</p>
+    <button (click)="generateShipment(option)" mat-raised-button color="primary">Generar Envío</button>
+    <br>
+    <hr>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

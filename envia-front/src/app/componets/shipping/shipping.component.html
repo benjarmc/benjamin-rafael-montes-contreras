@@ -1,0 +1,162 @@
+<!-- src/app/components/product-detail/shipping-form.component.html -->
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto flex flex-col items-center">
+    <div class="w-full md:w-4/5 text-center">
+      <h1 class="title-font font-medium text-3xl text-gray-900">Cotiza el Envío de tu Producto</h1>
+      <p class="leading-relaxed mt-4">Completa el formulario para obtener una cotización del envío de tu producto.
+        Proporciona la información de origen y destino para obtener una estimación precisa.</p>
+    </div>
+    <div class="w-full md:w-4/5 bg-gray-100 rounded-lg p-8 flex flex-col mt-10">
+      <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Información del Envío</h2>
+      <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()">
+        <!-- Información de Origen -->
+        <h3 class="text-gray-800 text-md font-medium title-font mb-4">Información de Origen</h3>
+        <div class="relative mb-4">
+          <label for="originName" class="leading-7 text-sm text-gray-600">Nombre (Origen)</label>
+          <input formControlName="originName" id="originName"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['originName'].errors?.['required']" class="text-red-600">Campo
+            requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="originEmail" class="leading-7 text-sm text-gray-600">Email (Origen)</label>
+          <input type="email" formControlName="originEmail" id="originEmail"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['originEmail'].errors?.['required']" class="text-red-600">
+            Campo requerido*
+          </div>
+          <div *ngIf="submitted  && shippingForm.controls['originEmail'].errors?.['email']" class="text-red-600">Email
+            inválido
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="originPhone" class="leading-7 text-sm text-gray-600">Teléfono (Origen)</label>
+          <input formControlName="originPhone" id="originPhone"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['originPhone'].errors?.['required']" class="text-red-600">
+            Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="originStreet" class="leading-7 text-sm text-gray-600">Calle (Origen)</label>
+          <input formControlName="originStreet" id="originStreet"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['originStreet'].errors?.['required']" class="text-red-600">
+            Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="originNumber" class="leading-7 text-sm text-gray-600">Número (Origen)</label>
+          <input formControlName="originNumber" id="originNumber"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['originNumber'].errors?.['required']" class="text-red-600">
+            Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="originCity" class="leading-7 text-sm text-gray-600">Ciudad (Origen)</label>
+          <input formControlName="originCity" id="originCity"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['originCity'].errors?.['required']" class="text-red-600">Campo
+            requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="originState" class="leading-7 text-sm text-gray-600">Estado (Origen)</label>
+          <select formControlName="originState" id="originState"
+                  class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <option value="" disabled>Seleccione un estado</option>
+            <option *ngFor="let state of states" [value]="state.code_3_digits">{{ state.name }}</option>
+          </select>
+          <div *ngIf="submitted  && shippingForm.controls['originEmail'].errors?.['required']" class="text-red-600">
+            Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="originPostalCode" class="leading-7 text-sm text-gray-600">Código Postal (Origen)</label>
+          <input formControlName="originPostalCode" id="originPostalCode"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['originState'].errors?.['required']" class="text-red-600">
+            Campo requerido*
+          </div>
+        </div>
+
+        <!-- Información de Destino -->
+        <h3 class="text-gray-800 text-md font-medium title-font mb-4">Información de Destino</h3>
+        <div class="relative mb-4">
+          <label for="destinationName" class="leading-7 text-sm text-gray-600">Nombre (Destino)</label>
+          <input formControlName="destinationName" id="destinationName"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['destinationName'].errors?.['required']" class="text-red-600">
+            Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="destinationEmail" class="leading-7 text-sm text-gray-600">Email (Destino)</label>
+          <input type="email" formControlName="destinationEmail" id="destinationEmail"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['destinationEmail'].errors?.['required']"
+               class="text-red-600">Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="destinationPhone" class="leading-7 text-sm text-gray-600">Teléfono (Destino)</label>
+          <input formControlName="destinationPhone" id="destinationPhone"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['destinationPhone'].errors?.['required']"
+               class="text-red-600">Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="destinationStreet" class="leading-7 text-sm text-gray-600">Calle (Destino)</label>
+          <input formControlName="destinationStreet" id="destinationStreet"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['destinationStreet'].errors?.['required']"
+               class="text-red-600">Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="destinationNumber" class="leading-7 text-sm text-gray-600">Número (Destino)</label>
+          <input formControlName="destinationNumber" id="destinationNumber"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['destinationNumber'].errors?.['required']"
+               class="text-red-600">Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="destinationCity" class="leading-7 text-sm text-gray-600">Ciudad (Destino)</label>
+          <input formControlName="destinationCity" id="destinationCity"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['destinationCity'].errors?.['required']" class="text-red-600">
+            Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="destinationState" class="leading-7 text-sm text-gray-600">Estado (Destino)</label>
+          <select formControlName="destinationState" id="destinationState"
+                  class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            <option value="" disabled>Seleccione un estado</option>
+            <option *ngFor="let state of states" [value]="state.code_3_digits">{{ state.name }}</option>
+          </select>
+          <div *ngIf="submitted  && shippingForm.controls['destinationState'].errors?.['required']"
+               class="text-red-600">Campo requerido*
+          </div>
+        </div>
+        <div class="relative mb-4">
+          <label for="destinationPostalCode" class="leading-7 text-sm text-gray-600">Código Postal (Destino)</label>
+          <input formControlName="destinationPostalCode" id="destinationPostalCode"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <div *ngIf="submitted  && shippingForm.controls['destinationPostalCode'].errors?.['required']"
+               class="text-red-600">Campo requerido*
+          </div>
+        </div>
+
+        <button type="submit"
+                class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+          Obtener Cotización
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<section class="container px-5 py-16 mx-auto flex justify-center">
+  <div class="lg:w-3/6 md:w-2/2 sm:w-1/1 bg-white rounded-lg shadow-md p-6 flex flex-col w-full mt-10 md:mt-0">
+    <h2 class="text-2xl font-semibold mb-4">Información del Envío</h2>
+    <div class="mb-4">
+      <p class="text-lg font-medium"><strong>Servicio:</strong> {{ data.service }}</p>
+    </div>
+    <div class="mb-4">
+      <p class="text-lg font-medium"><strong>Número de Rastreo:</strong> {{ data.trackingNumber }}</p>
+    </div>
+    <div class="mb-4">
+      <p class="text-lg font-medium"><strong>URL de Rastreo:</strong></p>
+      <a class="text-blue-500 hover:underline" [href]="data.trackUrl" target="_blank">{{ data.trackUrl }}</a>
+    </div>
+    <div class="mb-4">
+      <p class="text-lg font-medium"><strong>Etiqueta:</strong></p>
+      <a class="text-blue-500 hover:underline" [href]="data.label" target="_blank">Ver Etiqueta</a>
+    </div>
+    <div class="mt-6">
+      <button (click)="goBackToProducts()"
+              class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        Regresar a Productos
+      </button>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,29 @@
+{
+  "/api": {
+    "target": "http://localhost:3000",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": "/api"
+    },
+    "logLevel": "debug"
+  },
+  "/envia": {
+    "target": "https://api-test.envia.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/envia": "/"
+    },
+    "logLevel": "debug"
+  },
+  "/queries": {
+    "target": "https://queries-test.envia.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/queries": "/"
+    },
+    "logLevel": "debug"
+  }
+}

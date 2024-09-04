@@ -1,0 +1,13 @@
+<header class="text-gray-600 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a routerLink="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <img src="https://tendencys.com/assets/images/tendencys/LogoTendencys.svg" alt="Logo">
+      <span class="ml-3 text-xl">Envia.com</span>
+    </a>
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <a *ngIf="!isAuthenticated()" class="mr-5 hover:text-gray-900" routerLink="/login">Acceder</a>
+      <a *ngIf="!isAuthenticated()" class="mr-5 hover:text-gray-900" routerLink="/signup">Registrar</a>
+      <a *ngIf="isAuthenticated()" class="mr-5 hover:text-gray-900" (click)="logout()">Salir</a>
+    </nav>
+  </div>
+</header>
